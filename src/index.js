@@ -10,14 +10,14 @@ import Apidoc5 from './apidoc/apidoc5';
 import Apidocdashboard from './apidoc/apidocdashboard';
 import Apirouter from './apidoc/apirouter';
 import Apidoclogin from './apidoc/apidoclogin';
-import Nextstack1 from './NextStack/nextstack1';
-import Nextstack2 from './NextStack/nextstack2';
-import Nextstack12 from './NextStack/nextstack12';
-import Nextstack3 from './NextStack/nextstack3';
-import Nextstack4 from './NextStack/nextstack4';
-import Nextstack5 from './NextStack/nextstack5';
-import Nextstack345 from './NextStack/nextstack345';
-import NextstackRouter from './NextStack/nextstackrouter';
+// import Nextstack1 from './NextStack/nextstack1';
+// import Nextstack2 from './NextStack/nextstack2';
+// import Nextstack12 from './NextStack/nextstack12';
+// import Nextstack3 from './NextStack/nextstack3';
+// import Nextstack4 from './NextStack/nextstack4';
+// import Nextstack5 from './NextStack/nextstack5';
+// import Nextstack345 from './NextStack/nextstack345';
+// import NextstackRouter from './NextStack/nextstackrouter';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(

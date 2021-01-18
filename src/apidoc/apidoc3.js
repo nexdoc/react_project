@@ -3,7 +3,7 @@ import {
     ListItem,
     ListItemAvatar, Select,
     FormControl, InputLabel,
-    ListItemText, CardContent, Menu, MenuItem, Snackbar, Icon, Typography, Button, IconButton, Dialog, DialogContent, DialogActions, DialogContentText, DialogTitle, Grid, TextField, Tab, Tabs, Paper, MenuList
+    ListItemText, CardContent, Menu, MenuItem, Snackbar,Table, TableBody, TableCell, TableRow, TableContainer, TableHead, Icon, Typography, Button, IconButton, Dialog, DialogContent, DialogActions, DialogContentText, DialogTitle, Grid, TextField, Tab, Tabs, Paper, MenuList
 } from '@material-ui/core';
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
@@ -206,7 +206,7 @@ export default class Apidoc3 extends React.Component {
 
     }
 
-    handleDeleteApi = (api_id) => {
+    handleDeleteApi = () => {
         fetch("https://nexdoc-api.herokuapp.com/v1/delete_api_project", {
             method: "POST",
             headers: {
@@ -215,15 +215,23 @@ export default class Apidoc3 extends React.Component {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-                "api_id": api_id,
+                "api_id": this.state.api_id,
             })
         })
             .then((res) => res.json())
             .then((resJson) => {
                 console.log(resJson)
-                this.handleGetApi()
+                this.handleGetApi();
+                this.setState({
+                    open:false
+                })
             })
 
+    }
+    handleCloseOpen = () => {
+        this.setState({
+            open: false
+        })
     }
 
     handleApiadd = (e) => {
@@ -350,7 +358,7 @@ export default class Apidoc3 extends React.Component {
         })
     }
 
-    edit = (data) => { 
+    edit = (data) => {
         localStorage.setItem("data", JSON.stringify(data));
     }
 
@@ -394,10 +402,10 @@ export default class Apidoc3 extends React.Component {
                                         <Button style={{ backgroundColor: "blue", color: "white", marginRight: 60 }}>{s.method}</Button>
                                         <ListItemText style={{ marginLeft: 20 }} hidden>{s._id}</ListItemText>
                                         <Link style={{ marginLeft: 20, color: "black", textDecoration: "none" }} onClick={() => this.edit(s)} >{s.path_name}</Link>
-                                        <IconButton style={{ marginRight: 190 }} onClick={() => this.handleDeleteApi(s._id)}>
+                                        <IconButton style={{ marginRight: 190 }} onClick={() => {this.setState({api_id:s._id})}}>
                                             <Icon>
                                                 delete
-                      </Icon>
+                                            </Icon>
                                         </IconButton>
                                     </ListItem>
                                 </div>
@@ -417,7 +425,7 @@ export default class Apidoc3 extends React.Component {
                         <Button onClick={this.handleCloseSet} color="primary">
                             CANCEL
                             </Button>
-                        <Button onClick={this.handleCloseSet} color="primary">
+                        <Button onClick={this.handleDeleteApi} color="primary">
                             DELETE
                             </Button>
                     </DialogActions>
@@ -509,9 +517,74 @@ export default class Apidoc3 extends React.Component {
                                         <Tab label="Response" />
                                     </Tabs>
                                 </Paper>
-                                <TabPanel value={this.state.value} index={0}>Item One</TabPanel>
-                                <TabPanel value={this.state.value} index={1}>Item Two</TabPanel>
-                                <TabPanel value={this.state.value} index={2}>Item Three</TabPanel>
+                                <TabPanel value={this.state.value} index={0}>
+                                    <TableContainer component={Paper}>
+
+                                        <Table aria-label="simple table" >
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Param</TableCell>
+                                                    <TableCell align="right">Value</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {this.state.add_param.map((s) => {
+                                                    return (
+                                                        <TableRow>
+                                                            <TableCell>{s.paramName}</TableCell>
+                                                            <TableCell align="right">{s.paramValue}</TableCell>
+                                                        </TableRow>
+                                                    )
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                </TabPanel>
+                                <TabPanel value={this.state.value} index={1}>
+                                    <TableContainer component={Paper}>
+
+                                        <Table aria-label="simple table" >
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Param</TableCell>
+                                                    <TableCell align="right">Value</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {this.state.add_param.map((s) => {
+                                                    return (
+                                                        <TableRow>
+                                                            <TableCell>{s.paramName}</TableCell>
+                                                            <TableCell align="right">{s.paramValue}</TableCell>
+                                                        </TableRow>
+                                                    )
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                </TabPanel>
+                                <TabPanel value={this.state.value} index={2}>
+                                    <TableContainer component={Paper}>
+                                        <Table aria-label="simple table" >
+                                            <TableHead>
+                                                <TableRow>
+                                                    <TableCell>Param</TableCell>
+                                                    <TableCell align="right">Value</TableCell>
+                                                </TableRow>
+                                            </TableHead>
+                                            <TableBody>
+                                                {this.state.add_param.map((s) => {
+                                                    return (
+                                                        <TableRow>
+                                                            <TableCell>{s.paramName}</TableCell>
+                                                            <TableCell align="right">{s.paramValue}</TableCell>
+                                                        </TableRow>
+                                                    )
+                                                })}
+                                            </TableBody>
+                                        </Table>
+                                    </TableContainer>
+                                </TabPanel>
                             </Grid>
                         </Grid>
                     </DialogContent>

@@ -110,13 +110,13 @@ export default class Apidoc2 extends React.Component {
                   onChange={(e) => { this.setState({ password: e.target.value }) }}
                 />
                 {this.state.showPassword === "password" ?
-                  <IconButton onClick={this.handlePassword} style={{ color: "black", position: "absolute", right: 400, top: 430, cursor: "pointer" }}>
+                  <IconButton onClick={this.handlePassword} style={{ color: "black", position: "absolute", marginLeft: -50, marginTop: 5, cursor: "pointer" }}>
                     <Icon>
                       visibility_off
                 </Icon>
                   </IconButton>
                   :
-                  <IconButton onClick={this.handlePasswordOpen} style={{ color: "black", position: "absolute", right: 400, top: 430, cursor: "pointer" }}>
+                  <IconButton onClick={this.handlePasswordOpen} style={{ color: "black", position: "absolute",  marginLeft: -50, marginTop: 5, cursor: "pointer" }}>
                     <Icon>
                       visibility
                 </Icon>
