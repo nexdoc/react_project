@@ -158,10 +158,8 @@ export default class Apidoc3 extends React.Component {
                 this.setState({
                     project: false,
                     menuOpen: false,
-
                 })
             })
-
     }
     handleAdd = () => {
         var add = this.state.add_param;
