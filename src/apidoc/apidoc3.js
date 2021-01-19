@@ -221,7 +221,7 @@ export default class Apidoc3 extends React.Component {
                 console.log(resJson)
                 this.handleGetApi();
                 this.setState({
-                    open:false
+                    setOpen:false
                 })
             })
 
@@ -400,7 +400,7 @@ export default class Apidoc3 extends React.Component {
                                         <Button style={{ backgroundColor: "blue", color: "white", marginRight: 60 }}>{s.method}</Button>
                                         <ListItemText style={{ marginLeft: 20 }} hidden>{s._id}</ListItemText>
                                         <Link style={{ marginLeft: 20, color: "black", textDecoration: "none" }} onClick={() => this.edit(s)} >{s.path_name}</Link>
-                                        <IconButton style={{ marginRight: 190 }} onClick={() => {this.setState({api_id:s._id})}}>
+                                        <IconButton style={{ marginRight: 190 }} onClick={() => {this.setState({api_id:s._id, setOpen:true})}}>
                                             <Icon>
                                                 delete
                                             </Icon>
